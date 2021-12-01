@@ -13,6 +13,8 @@ import (
 )
 
 var (
+	Lz4OptionCompressionLevel = lz4.CompressionLevelOption(lz4.Level1)
+
 	DefaultExcludedExtentions = NewExcludedExtensions([]string{
 		".png", ".gif", ".jpeg", ".jpg",
 	})

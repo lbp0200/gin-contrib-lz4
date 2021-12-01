@@ -20,7 +20,9 @@ type lz4Handler struct {
 func newLz4Handler(options ...Option) *lz4Handler {
 	var lz4Pool sync.Pool
 	lz4Pool.New = func() interface{} {
-		return lz4.NewWriter(nil)
+		lw := lz4.NewWriter(nil)
+		_ = Lz4OptionCompressionLevel(lw)
+		return lw
 	}
 	handler := &lz4Handler{
 		Options: DefaultOptions,
